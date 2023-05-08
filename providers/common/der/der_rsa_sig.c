@@ -37,6 +37,7 @@ int ossl_DER_w_algorithmIdentifier_MDWithRSAEncryption(WPACKET *pkt, int tag,
     switch (mdnid) {
 #ifndef FIPS_MODULE
         MD_with_RSA_CASE(md5, precompiled);
+        MD_with_RSA_CASE(md4, precompiled);
 #endif
         MD_with_RSA_CASE(sha1, precompiled);
         MD_with_RSA_CASE(sha224, precompiled);

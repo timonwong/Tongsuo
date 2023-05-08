@@ -22,7 +22,7 @@
  *     ALGNAME[VERSION?][-SUBNAME[VERSION?]?][-SIZE?][-MODE?]
  *
  *     VERSION is only present if there are multiple versions of
- *     an alg (MD series).  It may be omitted if there is only
+ *     an alg (MD4, MD5).  It may be omitted if there is only
  *     one version (if a subsequent version is released in the future,
  *     we can always change the canonical name, and add the old name
  *     as an alias).
@@ -161,6 +161,7 @@
 #define PROV_NAMES_SM3 "SM3:1.2.156.10197.1.401"
 #define PROV_NAMES_MD5 "MD5:SSL3-MD5:1.2.840.113549.2.5"
 #define PROV_NAMES_MD5_SHA1 "MD5-SHA1"
+#define PROV_NAMES_MD4 "MD4:1.2.840.113549.2.4"
 
 /*-
  * KDFs / PRFs

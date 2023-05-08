@@ -29,6 +29,7 @@ extern const OSSL_DISPATCH ossl_shake_256_functions[];
 extern const OSSL_DISPATCH ossl_md5_functions[];
 extern const OSSL_DISPATCH ossl_md5_sha1_functions[];
 extern const OSSL_DISPATCH ossl_sm3_functions[];
+extern const OSSL_DISPATCH ossl_md4_functions[];
 extern const OSSL_DISPATCH ossl_wp_functions[];
 extern const OSSL_DISPATCH ossl_nullmd_functions[];
 

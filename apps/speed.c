@@ -303,7 +303,7 @@ const OPTIONS speed_options[] = {
 };
 
 enum {
-    D_MD5, D_SHA1,
+    D_MD4, D_MD5, D_SHA1, D_RMD160,
     D_SHA256, D_SHA512, D_HMAC,
     D_CBC_DES, D_EDE3_DES, D_RC4,
     D_CBC_RC5,
@@ -313,7 +313,7 @@ enum {
 };
 /* name of algorithms to test. MUST BE KEEP IN SYNC with above enum ! */
 static const char *names[ALGOR_NUM] = {
-    "md5", "sha1",
+    "md4", "md5", "sha1", "rmd160",
     "sha256", "sha512", "hmac(md5)",
     "des-cbc", "des-ede3", "rc4",
     "rc5-cbc",
@@ -324,6 +324,7 @@ static const char *names[ALGOR_NUM] = {
 
 /* list of configured algorithm (remaining), with some few alias */
 static const OPT_PAIR doit_choices[] = {
+    {"md4", D_MD4},
     {"md5", D_MD5},
     {"hmac", D_HMAC},
     {"sha1", D_SHA1},
@@ -749,6 +750,11 @@ static int EVP_Digest_loop(const char *mdname, int algindex, void *args)
 static int EVP_Digest_md_loop(void *args)
 {
     return EVP_Digest_loop(evp_md_name, D_EVP, args);
+}
+
+static int EVP_Digest_MD4_loop(void *args)
+{
+    return EVP_Digest_loop("md4", D_MD4, args);
 }
 
 static int MD5_loop(void *args)
@@ -2550,6 +2556,19 @@ int speed_main(int argc, char **argv)
 #ifndef OPENSSL_NO_PAILLIER
     paillier_c[R_PAILLIER_G_OPTIMIZE][0] = count / 18000;
 #endif   /* OPENSSL_NO_PAILLIER */
+
+    if (doit[D_MD4]) {
+        for (testnum = 0; testnum < size_num; testnum++) {
+            print_message(names[D_MD4], c[D_MD4][testnum], lengths[testnum],
+                          seconds.sym);
+            Time_F(START);
+            count = run_benchmark(async_jobs, EVP_Digest_MD4_loop, loopargs);
+            d = Time_F(STOP);
+            print_result(D_MD4, testnum, count, d);
+            if (count < 0)
+                break;
+        }
+    }
 
     if (doit[D_MD5]) {
         for (testnum = 0; testnum < size_num; testnum++) {

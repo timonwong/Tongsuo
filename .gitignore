@@ -18,6 +18,7 @@
 /apps/CA.pl
 /apps/tsget
 /apps/tsget.pl
+/apps/md4.c
 
 # Auto generated headers
 /crypto/buildinf.h

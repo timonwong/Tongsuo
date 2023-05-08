@@ -63,6 +63,7 @@ jobs:
           no-hw,
           no-hw-padlock,
           no-makedepend,
+          no-md4,
           no-module,
           no-msan,
           no-multiblock,

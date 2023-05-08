@@ -71,3 +71,11 @@ id-rsassa-pkcs1-v1_5-with-sha3-224 OBJECT IDENTIFIER ::= { sigAlgs 13 }
 id-rsassa-pkcs1-v1_5-with-sha3-256 OBJECT IDENTIFIER ::= { sigAlgs 14 }
 id-rsassa-pkcs1-v1_5-with-sha3-384 OBJECT IDENTIFIER ::= { sigAlgs 15 }
 id-rsassa-pkcs1-v1_5-with-sha3-512 OBJECT IDENTIFIER ::= { sigAlgs 16 }
+
+
+-- -------------------------------------------------------------------
+-- These OID's exist in the codebase but may need to be deprecated at some point.
+-- md5_sha1 has been omitted as it does not look like valid entry.
+
+md4WithRSAEncryption OBJECT IDENTIFIER ::= { pkcs-1 3 }
+
